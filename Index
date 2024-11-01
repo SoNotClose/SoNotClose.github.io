@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awake</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .oval {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 300px;
+            height: 150px;
+            border: 3px solid white;
+            border-radius: 50%;
+            background-color: transparent;
+            margin-top: 20px;
+        }
+
+        .oval input {
+            background-color: black;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 1.2em;
+            text-align: center;
+            width: 80%;
+        }
+
+        .top-bar {
+            width: 100%;
+            background-color: #333;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+        }
+
+        .top-bar button {
+            background-color: transparent;
+            border: none;
+            color: #aaa;
+            font-size: 1em;
+            cursor: pointer;
+            padding: 10px 15px;
+            font-weight: bold;
+        }
+
+        .top-bar .active {
+            color: white;
+            border-bottom: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter a Username</h2>
+        <div class="oval">
+            <input type="text" placeholder="@Username" id="usernameInput">
+        </div>
+        <button onclick="enterSite()">Enter</button>
+    </div>
+
+    <div class="top-bar" id="topBar" style="display: none;">
+        <button id="masterTab" onclick="showTab('master')">MASTER</button>
+        <button id="productsTab" onclick="showTab('products')">PRODUCTS</button>
+        <button id="tipsTab" onclick="showTab('tips')">TIPS</button>
+        <button id="accountTab" onclick="showTab('account')">ACCOUNT</button>
+        <button id="settingsTab" onclick="showTab('settings')">SETTINGS</button>
+    </div>
+
+    <script>
+        function enterSite() {
+            document.querySelector('.container').style.display = 'none';
+            document.getElementById('topBar').style.display = 'flex';
+            showTab('master');
+        }
+
+        function showTab(tab) {
+            const tabs = ['master', 'products', 'tips', 'account', 'settings'];
+            tabs.forEach(t => {
+                document.getElementById(t + 'Tab').classList.remove('active');
+            });
+            document.getElementById(tab + 'Tab').classList.add('active');
+        }
+    </script>
+</body>
+</html>
